@@ -23,4 +23,4 @@ Logo em seguida é exibido um resumo geral da somatória da pontuação geral, i
 * Salve o código `Main.java` que  está na pasta `src` .
 
 * Abra uma nova janela no Prompt de Comando, navegue até o diretório onde o arquivo está salvo e digite comando `javac Main.java`. Pressione Enter.
-* Por último digite `java Main`
+* Por último digite `java Main`. Pressione Enter.
