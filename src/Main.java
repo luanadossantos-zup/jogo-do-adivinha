@@ -126,9 +126,11 @@ public class Main {
 
         } while (continuarJogo.equals("s"));
 
+        System.out.println("-------------------------------------");
         System.out.println("Pontuação final: " + pontuacao + " pontos.");
         System.out.println("Números acertados: " + acertos + ".");
         System.out.println("Números errados: " + erros + ".");
+        System.out.println("-------------------------------------");
 
         System.exit(0);
 
