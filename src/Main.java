@@ -4,15 +4,12 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int nivelDificuldade = 0;
         int numeroAleatorio = 0;
-
 
 
         System.out.println("-------------------------------------");
         System.out.println("Olá, bem vindo ao Jogo do Adivinha!");
         System.out.println("-------------------------------------");
-        System.out.println(" ");
 
 
         jogandoOJogo(scanner, numeroAleatorio);
@@ -20,20 +17,21 @@ public class Main {
 
     }
 
-    public static int jogadorSelecionaDificuldadeRetornaRandom (Scanner scanner, int numeroAleatorio) {
+    public static int jogadorSelecionaDificuldadeRetornaRandom (Scanner scanner) {
+        int numeroAleatorio;
         int nivelDificuldade = 0;
 
         System.out.println("Por favor, digite um número para selecionar a dificuldade:");
 
 
         do {
-            System.out.println("1 - Fácil");
-            System.out.println("2 - Médio");
-            System.out.println("3 - Difícil");
+            System.out.println("1 - Fácil (entre 1 e 10)");
+            System.out.println("2 - Médio (entre 1 e 50)");
+            System.out.println("3 - Difícil (entre 1 e 100)");
             try {
                 nivelDificuldade = scanner.nextInt();
 
-                if (nivelDificuldade < 1 || nivelDificuldade > 4) {
+                if (nivelDificuldade < 1 || nivelDificuldade > 3) {
                     System.out.println("-------------------------------------");
                     System.out.println("Por favor, apenas números de 1 a 3!");
                     System.out.println("-------------------------------------");
@@ -88,40 +86,49 @@ public class Main {
 
 
         do {
-            numeroAleatorio = jogadorSelecionaDificuldadeRetornaRandom(scanner, numeroAleatorio);
+            numeroAleatorio = jogadorSelecionaDificuldadeRetornaRandom(scanner);
 
             try {
+                System.out.println(" ");
                 System.out.println("Faça seu palpite. Digite um número:");
                 numeroEscolhido = scanner.nextInt();
 
                 if (numeroEscolhido == numeroAleatorio) {
+                    System.out.println(" ");
                     System.out.println("Parabéns, você acertou o número");
                     pontuacao = pontuacao + 10;
                     acertos.add(numeroEscolhido);
 
                 } else if (numeroEscolhido == numeroAleatorio +1 || numeroEscolhido == numeroAleatorio -1) {
+                    System.out.println(" ");
                     System.out.println("Quase lá! Você estava a 1 de distância do número sorteado. Você ganhou 5 pontos.");
                     pontuacao = pontuacao +5;
                     erros.add(numeroAleatorio);
                 } else {
+                    System.out.println(" ");
                     System.out.println("Infelizmente você não acertou e não ganhou nenhum ponto!");
                     erros.add(numeroAleatorio);
                 }
             } catch (Exception e) {
+                System.out.println(" ");
                 System.out.println("-------------------------------------");
                 System.out.println("Por favor, digite apenas números!");
                 System.out.println("-------------------------------------");
                 scanner.next();
             }
 
-            System.out.println("Continuar jogo? Digite S para Sim ou qualquer tecla para não:");
+            System.out.println(" ");
+            System.out.println("Continuar jogo? Digite S para Sim ou qualquer tecla para Não:");
             continuarJogo = scanner.next().toLowerCase();
+
+
+            System.out.println(" ");
 
         } while (continuarJogo.equals("s"));
 
-        System.out.println("Pontuação final " + pontuacao + " pontos.");
-        System.out.println("Números acertados: " + acertos);
-        System.out.println("Números errados: " + erros);
+        System.out.println("Pontuação final: " + pontuacao + " pontos.");
+        System.out.println("Números acertados: " + acertos + ".");
+        System.out.println("Números errados: " + erros + ".");
 
         System.exit(0);
 
