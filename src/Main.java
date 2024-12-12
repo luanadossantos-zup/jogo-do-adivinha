@@ -5,7 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int nivelDificuldade = 0;
         int numeroAleatorio = 0;
-        int numeroDeRodadas;
+        int numeroDeRodadas = 0;
 
 
         System.out.println("-------------------------------------");
@@ -15,6 +15,7 @@ public class Main {
 
 
         numeroAleatorio = jogadorSelecionaDificuldade(scanner, nivelDificuldade,numeroAleatorio);
+        numeroDeRodadas = numeroDeRodadas(scanner, numeroDeRodadas);
 
 
     }
@@ -74,5 +75,24 @@ public class Main {
         return numeroAleatorio;
     }
 
+    public static int numeroDeRodadas(Scanner scanner, int numeroDeRodadas) {
+        System.out.println("Digite o número de rodadas (de 1 a 15:");
 
+        do {
+            try {
+                numeroDeRodadas = scanner.nextInt();
+            } catch (Exception e) {
+                System.out.println("-------------------------------------");
+                System.out.println("Por favor, apenas números de 1 a 15!");
+                System.out.println("-------------------------------------");
+                scanner.next();
+
+            }
+
+
+
+        } while(numeroDeRodadas > 15 || numeroDeRodadas <1);
+
+        return numeroDeRodadas;
+    }
 }
